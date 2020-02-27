@@ -17,14 +17,39 @@ namespace App1
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
+            //SetContentView(Resource.Layout.activity_main);
+            // SetContentView(Resource.Layout.activity_main);
+            // todo:content_mainではなくて？
+            SetContentView(Resource.Layout.content_main);
+
+            // get our ui controls from loaded layout
+            EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
+            TextView translatedPhoneword = FindViewById<TextView>(Resource.Id.TransletedPhoneword);
+            Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
+
+
+            translateButton.Click += (sender, e) =>
+            {
+                string translatedNumber = Core.PhonewordTranslator.ToNumber(phoneNumberText.Text);
+                if (string.IsNullOrWhiteSpace(translatedNumber))
+                {
+                    translatedPhoneword.Text = string.Empty;
+                }
+                else
+                {
+                    translatedPhoneword.Text = translatedNumber;
+                }
+            };
+
         }
+
+        
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {

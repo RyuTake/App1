@@ -9,21 +9,28 @@
     tools:showIn="@layout/activity_main"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:id="@+id/linearLayout1">
+    android:id="@+id/linearLayout1"
+    android:orientation="vertical">
     <TextView
-        android:text="Enter a Phone word"
+        android:text="Enter a phone number"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:id="@+id/textView1" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/PhoneNumberText"
         android:text="1-855-XAMARIN" />
-
+    <Button
+        android:text="Transltate"
+        android:layout_width="147.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/TranslateButton" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TransletedPhoneword" />
 
 
 </LinearLayout>
